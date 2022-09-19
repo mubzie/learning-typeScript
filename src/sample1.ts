@@ -7,7 +7,7 @@ const multiply2 = (a: number, b: number, printText: string) => {
 }
 
 // using the first multiply function(multiply), the 2 function calls will work without throwing any error. 
-// kind of seems like the code was written in javascript, but not really.
+// seems like the code was written in javascript, but not really.
 // this happens because typescript "infer" the parameter as "type: any". 
 multiply(4,5, 'the answer is:');
 multiply('can we multiply a string', 4, 'Multiplied a string and 4, the result is:');

@@ -18,14 +18,25 @@ calculator(1, 0, 'divide');
 // instead of explicitly specifying the return type, you can make a "type alias" like 
 // this one: type Result = "number" | "string"
 const calculator2 = (a: number, b: number, operator: Operation): number | string => {
-    if (operator === 'multiply') {
-        return a * b;
-    } else if (operator === 'divide') {
-        if (b === 0) return 'input valid number'
-        return a / b;
-    } else {
-        return a + b;
+    switch (operator) {
+        case 'multiply':
+            return a * b;
+        case 'divide':
+            if (b === 0) throw new Error('enter valid number');
+            return a / b;
+        case 'add':
+            return a + b;
+        default:
+        throw new Error('operation is not multiply or divide or add')
     }
 }
 
-calculator(1, 3, 'add');
+try {
+    console.log(calculator2(2, 0, "divide"))
+} catch (error: unknown ){
+    let errorMessage = "something went wrong";
+    if (error instanceof Error) {
+        errorMessage += ' Error:' + error.message
+    }
+    console.log(errorMessage)
+}
